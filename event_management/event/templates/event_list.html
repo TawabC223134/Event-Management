@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event List</title>
+</head>
+<body>
+    <h1>Event List</h1>
+    <a href="{% url 'event_create' %}">Create Event</a>
+    <ul>
+        {% for event in events %}
+            <li>
+                <strong>{{ event.title }}</strong> - {{ event.date_time }} <br>
+                Location: {{ event.location }} <br>
+                Capacity: {{ event.capacity }} <br>
+                Status: {{ event.get_status_display }} <br>
+                <a href="{% url 'event_update' event.id %}">Edit</a>
+                <a href="{% url 'event_delete' event.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
